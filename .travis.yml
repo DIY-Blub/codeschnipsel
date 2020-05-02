@@ -1,6 +1,6 @@
 os: linux
 language: python
-sudo: true
+sudo: false
 
 python:
   - "3.4"
@@ -12,4 +12,4 @@ python:
 before_install:
   - sudo apt-get update
 
-script: python3 test.py
+script: python test.py
