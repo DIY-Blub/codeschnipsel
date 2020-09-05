@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import json
+import requests
+
+try:
+    resp = requests.get("https://smarthome.cenz.at/wetterdaten.php")
+    data = resp.json()
+except requests.exceptions.Timeout as e:
+    print("Exception Timeout: " + str(e))
+except requests.exceptions.TooManyRedirects as e:
+    print("Exception TooManyRedirects: " + str(e))
+except requests.exceptions.RequestException as e:
+    print("Exception RequestException: " + str(e))
+except requests.exceptions.HTTPError as e:
+    print("Exception HTTPError: " + str(e))
+except requests.HTTPError as e:
+    print("Error HTTPError: " + str(e))
+except Exception as e:
+    print("Exception: " + str(e))
+else:
+    print(str(data["currentvalues"]["data"]["temp"]["value"]) + " " + str(data["currentvalues"]["data"]["temp"]["unit"]))
+    print(str(data["currentvalues"]["data"]["hum"]["value"]) + " " + str(data["currentvalues"]["data"]["hum"]["unit"]))
