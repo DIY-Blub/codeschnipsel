@@ -1,0 +1,11 @@
+<?php
+date_default_timezone_set("Europe/Vienna");
+
+$data = file_get_contents("https://smarthome.cenz.at/wetterdaten.php");
+$data = json_decode($data,true);
+
+echo $data["currentvalues"]["data"]["temp"]["value"]." ".$data["currentvalues"]["data"]["temp"]["unit"];
+echo "<br>";
+echo $data["currentvalues"]["data"]["hum"]["value"]." ".$data["currentvalues"]["data"]["hum"]["unit"];
+
+?>
